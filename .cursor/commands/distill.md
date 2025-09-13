@@ -1,0 +1,1 @@
+Use .dtaipd/.flow/commands/distill.md. Read /.dtaipd/core/** + .dtaipd/inbox/* + workbench/<feature>/*; output artifacts.

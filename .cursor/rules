@@ -1,4 +1,0 @@
-/vibe -> Use .dtaipd/.flow/commands/vibe.md. Parse the user's description to infer a feature name and slug. If workbench/<slug> exists, use it; otherwise create it and then prototype. You may create files/folders as needed within workbench/<slug>, but never modify production code. Respect .dtaipd/.flow/guards.md.
-/distill -> Use .dtaipd/.flow/commands/distill.md. Read /.dtaipd/core/** + .dtaipd/inbox/* + workbench/<feature>/*; output artifacts.
-/ship -> Run .dtaipd/.flow/commands/ship.md (Developer → Reviewer → Project Manager). Respect .dtaipd/.flow/guards.md.
-/capture -> Summarize latest inbox note into .dtaipd/inbox/SUMMARY.md and extract TODOs.

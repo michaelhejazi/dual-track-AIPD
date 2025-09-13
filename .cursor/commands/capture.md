@@ -1,0 +1,1 @@
+Summarize latest inbox note into .dtaipd/inbox/SUMMARY.md and extract TODOs.

@@ -1,0 +1,1 @@
+Run .dtaipd/.flow/commands/ship.md (Developer → Reviewer → Project Manager). Respect .dtaipd/.flow/guards.md.

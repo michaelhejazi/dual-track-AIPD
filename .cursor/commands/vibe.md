@@ -1,0 +1,1 @@
+Use .dtaipd/.flow/commands/vibe.md. Parse the user's description to infer a feature name and slug. If workbench/<slug> exists, use it; otherwise create it and then prototype. You may create files/folders as needed within workbench/<slug>, but never modify production code. Respect .dtaipd/.flow/guards.md.
