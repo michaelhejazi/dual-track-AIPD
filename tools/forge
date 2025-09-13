@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cmd="${1:-}"
+name="${2:-}"
+slug(){ echo "$1" | tr '[:upper:]' '[:lower:]' | tr -cs '[:alnum:]' '-' | sed 's/^-//;s/-$//' ; }
+
+case "$cmd" in
+  vibe)
+    [ -z "$name" ] && { echo "Usage: tools/forge vibe \"Feature Name\""; exit 1; }
+    s=$(slug "$name")
+    mkdir -p "workbench/$s/adapters" "workbench/$s/mock"
+    : > "workbench/$s/NOTES.md"
+    echo "🎛️ Workbench created at workbench/$s"
+    ;;
+  new)
+    [ -z "$name" ] && { echo "Usage: tools/forge new \"Feature Name\""; exit 1; }
+    s=$(slug "$name")
+    mkdir -p "workbench/$s" "artifacts/$s"
+    : > "artifacts/$s/spec.md"
+    : > "artifacts/$s/acceptance-tests.md"
+    : > "artifacts/$s/tasks.md"
+    echo "🆕 Created workbench/$s and artifacts/$s"
+    ;;
+  *)
+    echo "Usage: tools/forge vibe|new \"Feature Name\""
+    ;;
+esac
