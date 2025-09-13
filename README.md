@@ -1,163 +1,142 @@
-# 🚀 dual-track-AIPD
+# 🚀 Dual-Track AI Product Development 🚀
 
-> **Dual-Track AI Product Development**  
-> A starter repo for running a **ChatGPT-first, dual-track workflow**:  
-> **Discovery & Planning** → **Vibe Prototyping** → **Artifact Distillation** → **Hands-off Shipping**.  
+<div align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/status-active-success.svg" alt="Status">
+</div>
 
-This system lets you:
-- Collaborate with ChatGPT on **brand, strategy, product goals, and UX guidelines**.
-- Rapidly prototype new features in a **safe workbench** (`/vibe`).
-- Distill prototypes into **specs, acceptance tests, and tasks** (`/distill`).
-- Ship them to production via a **hands-off pipeline** with Developer → Reviewer → PM agents (`/ship`).
+<p align="center">
+  A starter repository for a ChatGPT-first, dual-track workflow.
+  <br />
+  <strong>Discovery & Planning</strong> → <strong>Vibe Prototyping</strong> → <strong>Artifact Distillation</strong> → <strong>Hands-off Shipping</strong>.
+  <br />
+  <a href="#-about-the-project"><strong>Explore the docs »</strong></a>
+  <br />
+  <br />
+  <a href="#-getting-started">View Demo</a>
+  ·
+  <a href="https://github.com/michaelhejazi/dual-track-AIPD/issues">Report Bug</a>
+  ·
+  <a href="https://github.com/michaelhejazi/dual-track-AIPD/issues">Request Feature</a>
+</p>
 
 ---
 
-### Quick Commands
-- `/vibe` — Describe the feature; the agent will infer a name/slug, create `workbench/<slug>/` if missing, and start prototyping there.
-- `/distill` — Convert the prototype + notes into `artifacts/<slug>/{spec.md, acceptance-tests.md, tasks.md}`.
-- `/ship` — Hands-off pipeline: Developer → Reviewer → PM.
+## 📖 About The Project
 
+This system empowers you to collaborate with ChatGPT on **brand, strategy, product goals, and UX guidelines**. You can rapidly prototype new features in a **safe workbench**, distill prototypes into **specs, acceptance tests, and tasks**, and ship them to production via a **hands-off pipeline** with dedicated AI agents for development, review, and project management.
+
+### ✨ Core Ideas
+
+*   **Single source of truth**: `core/` holds brand, product, and UX docs.
+*   **Safe exploration**: `/workbench/` for isolated feature prototyping.
+*   **Executable artifacts**: `/artifacts/` bridge the gap between discovery and delivery.
+*   **Hands-off delivery**: A `/ship` pipeline reduces human bottlenecks.
+*   **Traceability**: Each feature gets a `Recap.md` for a clear history.
+
+---
+
+## 🗺️ Table of Contents
+
+*   [About The Project](#-about-the-project)
+*   [Repository Structure](#-repository-structure)
+*   [The Dual-Track Process](#-the-dual-track-process)
+*   [Getting Started](#-getting-started)
+*   [Usage](#-usage)
+*   [Contributing](#-contributing)
+*   [License](#-license)
 
 ---
 
 ## 📂 Repository Structure
 
 ```
-
 dual-track-AIPD/
 │
-├── core/                # High-level docs (you paste here from ChatGPT)
-│   ├── brand/           # Brand guidelines, visuals, voice
-│   ├── strategy/        # Vision, market thesis, principles
-│   ├── product/         # Goals, audiences, roadmap
-│   ├── ux/              # UI/UX design system, writing rules
-│   └── references/      # Links, recaps, research
+├── 📁 core/                # 🧠 High-level docs (paste from ChatGPT)
+│   ├── 🎨 brand/           # Brand guidelines, visuals, voice
+│   ├── 📈 strategy/        # Vision, market thesis, principles
+│   ├── 🎯 product/         # Goals, audiences, roadmap
+│   ├── 🖌️ ux/              # UI/UX design system, writing rules
+│   └── 📚 references/      # Links, recaps, research
 │
-├── inbox/               # Raw ChatGPT outputs, scratchpad
-├── workbench/           # Feature sandboxes (created via /vibe)
-├── artifacts/           # Distilled specs, acceptance tests, tasks
+├── 📥 inbox/               # 📝 Raw ChatGPT outputs, scratchpad
+├── 🛠️ workbench/           # 샌드박스 Feature sandboxes (created via /vibe)
+├── 📜 artifacts/           # ✨ Distilled specs, acceptance tests, tasks
 │
-├── .flow/               # Prompts, rules, and workflow definitions
-│   ├── commands/        # Agent prompts (/vibe, /distill, /ship)
-│   └── guards.md        # PROD\_ROOTS, file caps, task caps
+├── 🤖 .flow/               # 🧠 Prompts, rules, and workflow definitions
+│   ├── ➡️ commands/        # Agent prompts (/vibe, /distill, /ship)
+│   └── 🛡️ guards.md        # PROD_ROOTS, file caps, task caps
 │
-├── .cursor/             # IDE integration (slash commands)
-├── tools/               # CLI helpers (forge, etc.)
-└── README.md            # You are here
-
-````
+├── 🔌 .cursor/             # IDE integration (slash commands)
+├── 🧰 tools/               # CLI helpers (forge, etc.)
+└── 📄 README.md            # 📍 You are here
+```
 
 ---
 
 ## 🔄 The Dual-Track Process
 
+This workflow is designed to move from idea to production in a structured, AI-assisted way.
+
 ```mermaid
 flowchart LR
-    A([💡 ChatGPT Discovery]) --> B([🎨 Vibe Prototyping: vibe])
-    B --> C([🧪 Artifact Distillation: distill])
-    C --> D([🚀 Hands-off Shipping: ship])
+    A([💡 ChatGPT Discovery]) --> B([🎨 Vibe Prototyping: /vibe])
+    B --> C([🧪 Artifact Distillation: /distill])
+    C --> D([🚀 Hands-off Shipping: /ship])
     D --> E([📦 Production Code + Recap])
     E --> A
-````
+```
 
-**1. Discovery & Planning (ChatGPT app)**
+### 1. 🧠 Discovery & Planning (in ChatGPT)
 
-* Work with ChatGPT on strategy, product goals, UX rules.
-* Paste curated docs into `/core/` (they become context for agents).
-* Dump raw ideas into `/inbox/` if not ready yet.
+*   Collaborate with ChatGPT on strategy, product goals, and UX rules.
+*   Curate and paste final documents into `/core/` to provide context for the agents.
+*   Use `/inbox/` as a scratchpad for raw ideas.
 
-**2. Vibe Prototyping**
+### 2. 🎨 Vibe Prototyping (in your IDE)
 
-* Use `/vibe` in your IDE → prototype UI/UX safely, with adapters pulling in production resources.
+*   Use the `/vibe` command to quickly prototype UI/UX in a safe, isolated environment. Adapters pull in production resources without risk.
 
-**3. Artifact Distillation**
+### 3. 🧪 Artifact Distillation (in your IDE)
 
-* Run `/distill` in IDE → turns prototypes + notes into:
+*   Run the `/distill` command to transform prototypes and notes into concrete, executable artifacts:
+    *   `spec.md`: A lean, testable specification.
+    *   `acceptance-tests.md`: Plain-language tests and code stubs.
+    *   `tasks.md`: A list of atomic, actionable tasks.
 
-  * `spec.md` (lean, testable spec)
-  * `acceptance-tests.md` (plain-language + stubs)
-  * `tasks.md` (≤8 atomic tasks)
+### 4. 🚀 Hands-off Shipping (in your IDE)
 
-**4. Hands-off Shipping**
-
-* Run `/ship` in IDE → orchestrates:
-
-  * **Developer Agent** → implements code + tests
-  * **Reviewer Agent** → enforces patterns + quality
-  * **Project Manager Agent** → runs gates, finalizes PR, writes `Recap.md`
+*   Execute the `/ship` command to trigger the automated pipeline:
+    *   **Developer Agent**: Implements the code and tests.
+    *   **Reviewer Agent**: Enforces patterns, quality, and consistency.
+    *   **Project Manager Agent**: Manages gates, finalizes the PR, and writes a `Recap.md`.
 
 ---
 
-## ⚙️ Usage
+## 🚀 Getting Started
 
-### 📥 Bootstrap
-
-Clone the repo and run the scaffold:
+Clone the repository to get started.
 
 ```bash
-git clone git@github.com:michaelhejazi/dual-track-AIPD.git
+git clone https://github.com/michaelhejazi/dual-track-AIPD.git
 cd dual-track-AIPD
 ```
 
-
-### 🎨 Start a new feature Prototype
-
-In your IDE (Cursor, Claude Code, Copilot, etc.):
-
-```
-/vibe   # iterate on UX/UI safely in the workbench
-```
-
-This creates:
-
-```
-workbench/ai-feedback-highlights/
-  ├── README.md
-  ├── NOTES.md
-  ├── adapters/    # Re-exports prod resources
-  └── mock/        # Fake data if needed
-```
-
-### 🧪 Distill into artifacts
-
-```
-/distill   # generates spec.md, acceptance-tests.md, tasks.md
-```
-
-### 🚀 Ship hands-off
-
-```
-/ship   # Developer → Reviewer → Project Manager pipeline
-```
-
-Delivers:
-
-* Production code (within `PROD_ROOTS`: `app/`, `components/`, `lib/`, `styles/`)
-* A PR with What/Why/Files Changed/Risks
-* `artifacts/<feature>/Recap.md`
-
 ---
 
-## 🎯 Goals of This Repo
+## 🎮 Usage
 
-* **Single source of truth**: brand, product, UX docs live in `/core/`, always up-to-date.
-* **Safe exploration**: `/workbench/` for play + vibe coding, isolated from prod.
-* **Executable artifacts**: `/artifacts/` bridge discovery and delivery.
-* **Hands-off delivery**: `/ship` pipeline reduces human bottlenecks but enforces guardrails.
-* **Traceability**: Each feature produces a `Recap.md` → easy to see what shipped and why.
+The workflow is driven by a few simple commands from within your IDE.
 
----
+| Command      | Description                                                 | Output                                            |
+| :----------- | :---------------------------------------------------------- | :------------------------------------------------ |
+| **`/vibe`**  | Iterate on UX/UI safely in the workbench.                   | `workbench/<feature>/`                            |
+| **`/distill`** | Generate spec, acceptance tests, and tasks from a prototype. | `artifacts/<feature>/`                            |
+| **`/ship`**    | Kick off the automated Developer → Reviewer → PM pipeline.  | Production code, a PR, and `artifacts/<feature>/Recap.md` |
 
-## 📐 Principles
-
-* **Dual-track**: separate discovery (explore, vibe, ideas) from delivery (implement, ship).
-* **Guardrails, not gates**: let agents move fast, but enforce test coverage, file caps, and PROD\_ROOTS boundaries.
-* **Human-in-the-loop optional**: you can always review artifacts before shipping, but the system works end-to-end hands-off.
-* **Stack-agnostic**: works with any tech stack; production roots configurable in `.flow/guards.md`.
-
----
-
-## 📊 Visual Overview of Workflow
+### Visual Overview of the Workflow
 
 ```mermaid
 sequenceDiagram
@@ -184,6 +163,16 @@ sequenceDiagram
 
 ## 🤝 Contributing
 
-* Use issues to propose workflow improvements.
-* PRs welcome for better prompts, guards, or tooling in `/tools/` and `/flow/`.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m '''Add some AmazingFeature'''`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+---
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` file for more information.
