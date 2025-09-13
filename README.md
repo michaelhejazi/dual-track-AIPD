@@ -45,11 +45,11 @@ dual-track-AIPD/
 
 ```mermaid
 flowchart LR
-    A[ChatGPT Discovery] --> B[Vibe Prototyping (/vibe)]
-    B --> C[Artifact Distillation (/distill)]
-    C --> D[Hands-off Shipping (/ship)]
-    D --> E[Production Code + Recap]
-    E -->|Feeds back| A
+    A([💡 ChatGPT Discovery]) --> B([🎨 Vibe Prototyping: vibe])
+    B --> C([🧪 Artifact Distillation: distill])
+    C --> D([🚀 Hands-off Shipping: ship])
+    D --> E([📦 Production Code + Recap])
+    E --> A
 ````
 
 **1. Discovery & Planning (ChatGPT app)**
