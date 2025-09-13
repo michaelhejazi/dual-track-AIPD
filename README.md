@@ -29,9 +29,9 @@ This system empowers you to collaborate with ChatGPT on **brand, strategy, produ
 
 ### ✨ Core Ideas
 
-*   **Single source of truth**: `core/` holds brand, product, and UX docs.
-*   **Safe exploration**: `/workbench/` for isolated feature prototyping.
-*   **Executable artifacts**: `/artifacts/` bridge the gap between discovery and delivery.
+*   **Single source of truth**: `.dtaipd/core/` holds brand, product, and UX docs.
+*   **Safe exploration**: `workbench/` for isolated feature prototyping.
+*   **Executable artifacts**: `.dtaipd/artifacts/` bridge the gap between discovery and delivery.
 *   **Hands-off delivery**: A `/ship` pipeline reduces human bottlenecks.
 *   **Traceability**: Each feature gets a `Recap.md` for a clear history.
 
@@ -54,22 +54,23 @@ This system empowers you to collaborate with ChatGPT on **brand, strategy, produ
 ```
 dual-track-AIPD/
 │
-├── 📁 core/                # 🧠 High-level docs (paste from ChatGPT)
-│   ├── 🎨 brand/           # Brand guidelines, visuals, voice
-│   ├── 📈 strategy/        # Vision, market thesis, principles
-│   ├── 🎯 product/         # Goals, audiences, roadmap
-│   ├── 🖌️ ux/              # UI/UX design system, writing rules
-│   ├── 💻 tech-stack/      # Tech stack, architecture, and infrastructure
-│   └── 📚 references/      # Links, recaps, research
+├── 📁 .dtaipd/
+│   ├── 📁 core/                # 🧠 High-level docs (paste from ChatGPT)
+│   │   ├── 🎨 brand/           # Brand guidelines, visuals, voice
+│   │   ├── 📈 strategy/        # Vision, market thesis, principles
+│   │   ├── 🎯 product/         # Goals, audiences, roadmap
+│   │   ├── 🖌️ ux/              # UI/UX design system, writing rules
+│   │   ├── 💻 tech-stack/      # Tech stack, architecture, and infrastructure
+│   │   └── 📚 references/      # Links, recaps, research
+│   │
+│   ├── 📥 inbox/               # 📝 Raw ChatGPT outputs, scratchpad
+│   ├── 📜 artifacts/           # ✨ Distilled specs, acceptance tests, tasks
+│   │
+│   └── 🤖 .flow/               # 🧠 Prompts, rules, and workflow definitions
+│       ├── ➡️ commands/        # Agent prompts (/vibe, /distill, /ship)
+│       └── 🛡️ guards.md        # PROD_ROOTS, file caps, task caps
 │
-├── 📥 inbox/               # 📝 Raw ChatGPT outputs, scratchpad
 ├── 🛠️ workbench/           # 샌드박스 Feature sandboxes (created via /vibe)
-├── 📜 artifacts/           # ✨ Distilled specs, acceptance tests, tasks
-│
-├── 🤖 .flow/               # 🧠 Prompts, rules, and workflow definitions
-│   ├── ➡️ commands/        # Agent prompts (/vibe, /distill, /ship)
-│   └── 🛡️ guards.md        # PROD_ROOTS, file caps, task caps
-│
 ├── 🔌 .cursor/             # IDE integration (slash commands)
 ├── 🧰 tools/               # CLI helpers (forge, etc.)
 └── 📄 README.md            # 📍 You are here
@@ -93,8 +94,8 @@ flowchart LR
 ### 1. 🧠 Discovery & Planning (in ChatGPT)
 
 *   Collaborate with ChatGPT on strategy, product goals, and UX rules.
-*   Curate and paste final documents into `/core/` to provide context for the agents.
-*   Use `/inbox/` as a scratchpad for raw ideas.
+*   Curate and paste final documents into `/.dtaipd/core/` to provide context for the agents.
+*   Use `/.dtaipd/inbox/` as a scratchpad for raw ideas.
 
 ### 2. 🎨 Vibe Prototyping (in your IDE)
 
@@ -134,8 +135,8 @@ The workflow is driven by a few simple commands from within your IDE.
 | Command      | Description                                                 | Output                                            |
 | :----------- | :---------------------------------------------------------- | :------------------------------------------------ |
 | **`/vibe`**  | Iterate on UX/UI safely in the workbench.                   | `workbench/<feature>/`                            |
-| **`/distill`** | Generate spec, acceptance tests, and tasks from a prototype. | `artifacts/<feature>/`                            |
-| **`/ship`**    | Kick off the automated Developer → Reviewer → PM pipeline.  | Production code, a PR, and `artifacts/<feature>/Recap.md` |
+| **`/distill`** | Generate spec, acceptance tests, and tasks from a prototype. | `.dtaipd/artifacts/<feature>/`                            |
+| **`/ship`**    | Kick off the automated Developer → Reviewer → PM pipeline.  | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md` |
 
 ### Visual Overview of the Workflow
 
@@ -150,14 +151,14 @@ sequenceDiagram
 
     You->>ChatGPT: Explore product, brand, UX ideas
     ChatGPT->>You: Draft docs, specs, ideas
-    You->>Repo: Paste into /core/ or /inbox
+    You->>Repo: Paste into /.dtaipd/core/ or /.dtaipd/inbox
     You->>VibeAgent: /vibe "New Feature"
     VibeAgent->>Repo: workbench/<feature>/ prototype
     You->>DistillAgent: /distill
-    DistillAgent->>Repo: artifacts/<feature>/ (spec, tests, tasks)
+    DistillAgent->>Repo: .dtaipd/artifacts/<feature>/ (spec, tests, tasks)
     You->>ShipPipeline: /ship
     ShipPipeline->>Prod: Implement + PR + Recap
-    ShipPipeline->>Repo: artifacts/<feature>/Recap.md
+    ShipPipeline->>Repo: .dtaipd/artifacts/<feature>/Recap.md
 ```
 
 ---

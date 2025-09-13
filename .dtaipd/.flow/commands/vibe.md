@@ -20,7 +20,7 @@ NAMING & TARGET SELECTION
 
 CREATION & SAFETY
 - You MAY create/edit files only under `workbench/<slug>/`.
-- NEVER modify production code during /vibe (see PROD_ROOTS in .flow/guards.md).
+- NEVER modify production code during /vibe (see PROD_ROOTS in .dtaipd/.flow/guards.md).
 - Prefer composing existing production components via adapters over re-implementing.
 - Mirror production naming/props/folder conventions in the workbench.
 

@@ -10,4 +10,4 @@ GATES:
 
 OUTPUT:
 - Finalized PR
-- artifacts/<feature>/Recap.md
+- .dtaipd/artifacts/<feature>/Recap.md

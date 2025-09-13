@@ -6,7 +6,7 @@ CHECKS:
 - Changes confined to PROD_ROOTS
 - ≤ MAX_FILES_PER_PR (or justified)
 - Tests map 1:1 to acceptance checks
-- Naming/style follow /core/ux/**
+- Naming/style follow /.dtaipd/core/ux/**
 - No dead code or unnecessary abstractions
 
 OUTPUTS:

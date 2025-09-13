@@ -1,6 +1,6 @@
 ROLE: Developer Agent
 
-GOAL: Implement artifacts/<feature> into PRODUCTION code, tests first.
+GOAL: Implement .dtaipd/artifacts/<feature> into PRODUCTION code, tests first.
 
 TASKS:
 1. Plan change set (files to touch ≤ MAX_FILES_PER_PR).
