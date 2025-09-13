@@ -70,9 +70,8 @@ dual-track-AIPD/
 │       ├── ➡️ commands/        # Agent prompts (/vibe, /distill, /ship)
 │       └── 🛡️ guards.md        # PROD_ROOTS, file caps, task caps
 │
-├── 🛠️ workbench/           # 샌드박스 Feature sandboxes (created via /vibe)
+├── 🛠️ workbench/           # Feature sandboxes (created via /vibe)
 ├── 🔌 .cursor/             # IDE integration (slash commands)
-├── 🧰 tools/               # CLI helpers (forge, etc.)
 └── 📄 README.md            # 📍 You are here
 ```
 
