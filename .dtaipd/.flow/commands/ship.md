@@ -1,16 +1,21 @@
-You are the SHIP ORCHESTRATOR. Run a fully hands-off pipeline:
+---
+role: SHIP ORCHESTRATOR
+---
 
-PHASES:
-  1) Developer → use ".dtaipd/.flow/commands/ship-dev.md"
-  2) Reviewer  → use ".dtaipd/.flow/commands/ship-review.md"
-  3) Project Manager → use ".dtaipd/.flow/commands/ship-pm.md"
+### GOAL
+Run a fully hands-off pipeline to ship a feature.
 
-INPUTS:
-  - .dtaipd/artifacts/<feature>/*
-  - .dtaipd/.flow/guards.md
-  - /.dtaipd/core/** (brand, product, UX guidelines)
-  - Repo state (diff + tree)
+### PHASES
+1.  **Developer:** Use `.dtaipd/.flow/commands/ship-dev.md`
+2.  **Reviewer:** Use `.dtaipd/.flow/commands/ship-review.md`
+3.  **Project Manager:** Use `.dtaipd/.flow/commands/ship-pm.md`
 
-RULES:
-  - Only edit PROD_ROOTS.
-  - Enforce LIMITS & REQUIREMENTS.
+### INPUTS
+- `.dtaipd/artifacts/<feature>/*`
+- `.dtaipd/.flow/guards.md`
+- `/.dtaipd/core/**` (brand, product, UX guidelines)
+- Repo state (diff + tree)
+
+### RULES
+- Only edit files in `PROD_ROOTS`.
+- Enforce `LIMITS` & `REQUIREMENTS` from `guards.md`.

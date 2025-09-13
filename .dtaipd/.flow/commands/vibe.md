@@ -1,46 +1,50 @@
-ROLE: Vibe Coding Agent (self-starting)
+---
+role: Vibe Coding Agent (self-starting)
+goal: >
+  Start prototyping immediately from the user's description WITHOUT any prior setup.
+  If an appropriate workbench for the feature exists, use it; otherwise create one.
+---
 
-GOAL
-- Start prototyping immediately from the user's description WITHOUT any prior setup.
-- If an appropriate workbench for the feature exists, use it; otherwise create one.
-
-INPUT
+### INPUT
 - The user's free-text description of the feature to prototype.
 
-NAMING & TARGET SELECTION
-1) Derive a clear Feature Name (Title Case) and a URL-safe slug:
-   - Slug rules: lowercase, words separated by `-`, alnum only.
-   - Examples: "AI Feedback Highlights v1" → `ai-feedback-highlights-v1`
-2) If `workbench/<slug>/` exists → use it.
-3) Otherwise create: `workbench/<slug>/` with:
-   - `README.md`   (one-paragraph purpose)
-   - `NOTES.md`    (running decisions + open questions)
-   - `adapters/`   (re-exports of production resources; create stubs as needed)
-   - `mock/`       (mock data where helpful)
+### NAMING & TARGET SELECTION
+1.  **Infer Feature Name and Slug:**
+    - From the user's description, derive a clear Feature Name (Title Case) and a URL-safe `slug`.
+    - **Slug Rules:** Lowercase, words separated by `-`, alphanumeric characters only.
+    - **Example:** "AI Feedback Highlights v1" → `ai-feedback-highlights-v1`
 
-CREATION & SAFETY
-- You MAY create/edit files only under `workbench/<slug>/`.
-- NEVER modify production code during /vibe (see PROD_ROOTS in .dtaipd/.flow/guards.md).
+2.  **Determine Workbench:**
+    - **If** `workbench/<slug>/` exists, use it.
+    - **Else**, create `workbench/<slug>/` with the following structure:
+      - `README.md`: A one-paragraph summary of the feature's purpose.
+      - `NOTES.md`: A running log of decisions made and open questions.
+      - `adapters/`: For re-exporting production resources (create stubs as needed).
+      - `mock/`: For mock data.
+
+### CREATION & SAFETY
+- You **MAY ONLY** create or edit files within the `workbench/<slug>/` directory.
+- **NEVER** modify production code. Refer to `PROD_ROOTS` in `.dtaipd/.flow/guards.md`.
 - Prefer composing existing production components via adapters over re-implementing.
-- Mirror production naming/props/folder conventions in the workbench.
+- Mirror production naming conventions, props, and folder structures in the workbench.
 
-ADAPTERS
-- Create lightweight shims in `adapters/` that re-export from production if found,
-  else provide minimal stubs (do not scaffold in production).
-- Example adapter files: `ui.(ts|js)`, `hooks.(ts|js)`, `types.(ts|js)`.
+### ADAPTERS
+- Create lightweight shims in `adapters/` that re-export from production if found.
+- If a production resource is not found, provide a minimal stub. **Do not** scaffold in production.
+- **Example Adapter Files:** `ui.(ts|js)`, `hooks.(ts|js)`, `types.(ts|js)`.
 
-OUTPUTS
-- A working prototype inside `workbench/<slug>/` that exercises the primary user journey.
+### OUTPUTS
+- A working prototype inside `workbench/<slug>/` that demonstrates the primary user journey.
 - Updated `NOTES.md` with:
-  - Decisions made (bullets)
-  - Open questions (bullets)
-  - Any suggested production changes (1-line each, no code in prod)
+  - Decisions made (bullet points).
+  - Open questions (bullet points).
+  - Any suggested production changes (one-line descriptions; no code).
 
-SESSION STEPS
-- Step 1: Echo the inferred Feature Name + slug and whether you’re reusing or creating the folder.
-- Step 2: If creating, generate the scaffold files/folders listed above.
-- Step 3: Prototype iteratively; create additional files in the workbench as needed.
-- Step 4: Keep `NOTES.md` current with each meaningful change.
+### SESSION STEPS
+1.  **Acknowledge:** Echo the inferred Feature Name and `slug`. State whether you are reusing or creating the workbench directory.
+2.  **Scaffold (if new):** If creating a new workbench, generate the scaffold files and folders listed above.
+3.  **Prototype:** Iteratively build the prototype. Create additional files in the workbench as needed.
+4.  **Document:** Keep `NOTES.md` current with each meaningful change.
 
-STOP CONDITIONS
-- If you require a production change to proceed, write a one-line proposal in `NOTES.md` and continue prototyping around it (do not modify prod).
+### STOP CONDITIONS
+- If you require a production change to proceed, write a one-line proposal in `NOTES.md` and continue prototyping around it. **Do not** modify production code.
