@@ -1,4 +1,4 @@
-/vibe -> Use .flow/commands/vibe.md. Auto-create workbench if missing.
+/vibe -> Use .flow/commands/vibe.md. Parse the user's description to infer a feature name and slug. If workbench/<slug> exists, use it; otherwise create it and then prototype. You may create files/folders as needed within workbench/<slug>, but never modify production code. Respect .flow/guards.md.
 /distill -> Use .flow/commands/distill.md. Read /core/** + inbox/* + workbench/<feature>/*; output artifacts.
 /ship -> Run .flow/commands/ship.md (Developer → Reviewer → Project Manager). Respect .flow/guards.md.
 /capture -> Summarize latest inbox note into inbox/SUMMARY.md and extract TODOs.

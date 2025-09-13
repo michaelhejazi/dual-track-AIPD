@@ -12,6 +12,14 @@ This system lets you:
 
 ---
 
+### Quick Commands
+- `/vibe` — Describe the feature; the agent will infer a name/slug, create `workbench/<slug>/` if missing, and start prototyping there.
+- `/distill` — Convert the prototype + notes into `artifacts/<slug>/{spec.md, acceptance-tests.md, tasks.md}`.
+- `/ship` — Hands-off pipeline: Developer → Reviewer → PM.
+
+
+---
+
 ## 📂 Repository Structure
 
 ```
@@ -60,8 +68,6 @@ flowchart LR
 
 **2. Vibe Prototyping**
 
-* Run `tools/forge vibe "Feature Name"`
-* Creates a sandbox in `/workbench/<feature>/`
 * Use `/vibe` in your IDE → prototype UI/UX safely, with adapters pulling in production resources.
 
 **3. Artifact Distillation**
@@ -91,13 +97,15 @@ Clone the repo and run the scaffold:
 ```bash
 git clone git@github.com:michaelhejazi/dual-track-AIPD.git
 cd dual-track-AIPD
-bash bootstrap.sh
 ```
 
-### 🎛️ Start a new feature
 
-```bash
-tools/forge vibe "AI Feedback Highlights"
+### 🎨 Start a new feature Prototype
+
+In your IDE (Cursor, Claude Code, Copilot, etc.):
+
+```
+/vibe   # iterate on UX/UI safely in the workbench
 ```
 
 This creates:
@@ -108,14 +116,6 @@ workbench/ai-feedback-highlights/
   ├── NOTES.md
   ├── adapters/    # Re-exports prod resources
   └── mock/        # Fake data if needed
-```
-
-### 🎨 Prototype
-
-In your IDE (Cursor, Claude Code, Copilot, etc.):
-
-```
-/vibe   # iterate on UX/UI safely in the workbench
 ```
 
 ### 🧪 Distill into artifacts
