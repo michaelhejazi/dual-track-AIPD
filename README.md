@@ -59,6 +59,7 @@ dual-track-AIPD/
 │   ├── 📈 strategy/        # Vision, market thesis, principles
 │   ├── 🎯 product/         # Goals, audiences, roadmap
 │   ├── 🖌️ ux/              # UI/UX design system, writing rules
+│   ├── 💻 tech-stack/      # Tech stack, architecture, and infrastructure
 │   └── 📚 references/      # Links, recaps, research
 │
 ├── 📥 inbox/               # 📝 Raw ChatGPT outputs, scratchpad
