@@ -133,10 +133,10 @@ The workflow is driven by a few simple commands from within your IDE. The comman
 
 | Command      | Description                                                                              | Output                                                                 |
 | :----------- | :--------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
-| **/capture** | Summarizes the latest inbox note and extracts TODOs.                                     | `.dtaipd/inbox/SUMMARY.md`                                             |
-| **`/vibe`**  | Creates a prototype of a new feature in a safe workbench environment based on a description. | `workbench/<feature>/`                                                 |
-| **`/distill`** | Transforms a prototype and notes into a specification, acceptance tests, and tasks.      | `.dtaipd/artifacts/<feature>/`                                         |
-| **`/ship`**    | Initiates an automated pipeline to develop, review, and manage the feature shipment.     | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md` |
+| **/capture** | Summarizes the latest inbox note and extracts any TODOs.                                 | `.dtaipd/inbox/SUMMARY.md`                                             |
+| **`/vibe`**  | Creates a prototype in the workbench based on a user's description.                        | `workbench/<feature>/`                                                 |
+| **`/distill`** | Processes a feature to generate a specification, acceptance tests, and tasks.            | `.dtaipd/artifacts/<feature>/`                                         |
+| **`/ship`**    | Runs the automated pipeline to develop, review, and manage the feature shipment.         | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md` |
 
 ### Visual Overview of the Workflow
 
