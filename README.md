@@ -129,13 +129,14 @@ cd dual-track-AIPD
 
 ## 🎮 Usage
 
-The workflow is driven by a few simple commands from within your IDE.
+The workflow is driven by a few simple commands from within your IDE. The commands have been recently refactored for clarity and consistency, with more detailed instructions for the AI agents.
 
-| Command      | Description                                                 | Output                                            |
-| :----------- | :---------------------------------------------------------- | :------------------------------------------------ |
-| **`/vibe`**  | Iterate on UX/UI safely in the workbench.                   | `workbench/<feature>/`                            |
-| **`/distill`** | Generate spec, acceptance tests, and tasks from a prototype. | `.dtaipd/artifacts/<feature>/`                            |
-| **`/ship`**    | Kick off the automated Developer → Reviewer → PM pipeline.  | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md` |
+| Command      | Description                                                                              | Output                                                                 |
+| :----------- | :--------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
+| **/capture** | Summarizes the latest inbox note and extracts TODOs.                                     | `.dtaipd/inbox/SUMMARY.md`                                             |
+| **`/vibe`**  | Creates a prototype of a new feature in a safe workbench environment based on a description. | `workbench/<feature>/`                                                 |
+| **`/distill`** | Transforms a prototype and notes into a specification, acceptance tests, and tasks.      | `.dtaipd/artifacts/<feature>/`                                         |
+| **`/ship`**    | Initiates an automated pipeline to develop, review, and manage the feature shipment.     | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md` |
 
 ### Visual Overview of the Workflow
 
@@ -143,6 +144,7 @@ The workflow is driven by a few simple commands from within your IDE.
 sequenceDiagram
     participant You
     participant ChatGPT
+    participant CaptureAgent
     participant VibeAgent
     participant DistillAgent
     participant ShipPipeline
@@ -150,7 +152,9 @@ sequenceDiagram
 
     You->>ChatGPT: Explore product, brand, UX ideas
     ChatGPT->>You: Draft docs, specs, ideas
-    You->>Repo: Paste into /.dtaipd/core/ or /.dtaipd/inbox
+    You->>Repo: Paste into /.dtaipd/inbox
+    You->>CaptureAgent: /capture
+    CaptureAgent->>Repo: .dtaipd/inbox/SUMMARY.md
     You->>VibeAgent: /vibe "New Feature"
     VibeAgent->>Repo: workbench/<feature>/ prototype
     You->>DistillAgent: /distill
