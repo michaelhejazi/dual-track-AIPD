@@ -187,17 +187,3 @@ sequenceDiagram
 * Use issues to propose workflow improvements.
 * PRs welcome for better prompts, guards, or tooling in `/tools/` and `/flow/`.
 
----
-
-## 📌 Roadmap
-
-* [ ] Add sample feature with spec + tasks for testing.
-* [ ] GitHub Action: enforce file caps + acceptance tests in PRs.
-* [ ] Optional Issue/Project sync (tasks → GitHub Issues).
-* [ ] Pre-commit hooks for stricter PROD\_ROOTS enforcement.
-
----
-
-## 📖 License
-
-MIT
