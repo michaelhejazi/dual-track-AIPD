@@ -1,14 +1,20 @@
-PROD_ROOTS:
-  - app/
-  - components/
-  - lib/
-  - styles/
+# Guardrails
 
-LIMITS:
-  MAX_TASKS_PER_SPEC: 8
-  MAX_FILES_PER_PR: 10
+## Roots
+- PROD_ROOTS: ["app/", "src/", "server/", "packages/"]
+- WORKBENCH_ROOT: "workbench/"
+- CONTEXT_ROOT: ".dtaipd/"
 
-REQUIREMENTS:
-  - Tests must map 1:1 to acceptance checks in .dtaipd/artifacts/<feature>/acceptance-tests.md
-  - Prefer edits to existing modules; any new module requires a 1-line justification in PR body
-  - Do not modify workbench/, .dtaipd/artifacts/, .dtaipd/core/ during /ship
+## File Caps
+- /vibe: May write only under `workbench/` and `.dtaipd/`.
+- /distill: May write only under `.dtaipd/artifacts/` and prototype docs under `workbench/<feature>/docs/`.
+- /ship: May write to PROD_ROOTS and `.dtaipd/artifacts/`.
+
+## Task Caps
+- Keep tasks atomic and reversible.
+- Map each task to a commit in /ship.
+
+## Safety
+- Prefer adapters/read-only access to production assets during /vibe.
+- Any introduction of new dependencies must be justified and recorded in artifacts.
+- Significant changes require an ADR.

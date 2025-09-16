@@ -48,3 +48,24 @@ goal: >
 
 ### STOP CONDITIONS
 - If you require a production change to proceed, write a one-line proposal in `NOTES.md` and continue prototyping around it. **Do not** modify production code.
+
+# /vibe — Vibe Prototyper
+
+Goals:
+1) Build a runnable prototype in `workbench/<feature>/`.
+2) Align to the production stack and avoid library drift.
+
+Pre‑run: Stack Profile
+- Read `.dtaipd/core/tech-stack/stack.md` (authoritative).
+- Detect actual project tools from repo configs (`package.json`/locks, eslint/prettier/tsconfig, UI tokens).
+- Write `workbench/<feature>/stack-profile.md` summarizing authoritative vs detected, reuse plan, and any potential drift.
+
+Prototype Rules
+- Prefer existing UI kit/design tokens/testing tools.
+- If adding a dependency, justify and record in `stack-profile.md`.
+- Create `workbench/<feature>/README.md` (purpose, how to run, dependencies used, next TODOs).
+- Update `.dtaipd/inbox/Changelog.md` with a timestamped entry for each iteration.
+
+Deliverables
+- Prototype code under `workbench/<feature>/`.
+- `README.md`, `stack-profile.md`, optional `NOTES.md`.

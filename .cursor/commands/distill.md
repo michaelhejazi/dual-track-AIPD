@@ -1,8 +1,8 @@
 # Distill Feature
 
-Use the instructions in `.dtaipd/.flow/commands/distill.md` to process the feature.
+Follow `.dtaipd/.flow/commands/distill.md`.
 
-Read the following files for context:
-- `/.dtaipd/core/**`
-- `.dtaipd/inbox/*`
-- `workbench/<feature>/*`
+- Read: `/.dtaipd/core/**`, `.dtaipd/inbox/*`, `workbench/<feature>/**`.
+- Screenshot prototype → `workbench/<feature>/docs/visual.png`.
+- Only write outputs to `.dtaipd/artifacts/<feature>/`.
+- Produce: `spec.md` (embed visual), `acceptance-tests.md`, `tasks.md`, `deps-delta.md`, optional `adr.md`.

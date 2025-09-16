@@ -1,8 +1,10 @@
 # Vibe Prototype
 
-Use the instructions in `.dtaipd/.flow/commands/vibe.md` to create a prototype from a user's description.
+Follow `.dtaipd/.flow/commands/vibe.md`.
 
-- Parse the user's description to infer a feature name and slug.
-- If a workbench for the slug exists, use it; otherwise create it.
-- You may create files and folders as needed within the workbench, but do not modify production code.
-- Respect the guards in `.dtaipd/.flow/guards.md`.
+- Parse user description → feature name + slug.
+- Only write in: `workbench/<feature>/` and `.dtaipd/`.
+- Create or reuse `workbench/<feature>/`.
+- Build prototype aligned to `.dtaipd/core/tech-stack/stack.md`.
+- Produce `stack-profile.md`, `README.md` in the workbench.
+- Append a timestamped entry to `.dtaipd/inbox/Changelog.md`.

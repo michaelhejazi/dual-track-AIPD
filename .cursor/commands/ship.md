@@ -1,5 +1,8 @@
 # Ship Feature
 
-Use the instructions in `.dtaipd/.flow/commands/ship.md` to run the ship process.
+Follow `.dtaipd/.flow/commands/ship.md`.
 
-Respect the guards in `.dtaipd/.flow/guards.md`.
+- Only write in PROD_ROOTS and `.dtaipd/artifacts/`.
+- TDD loop per task: write failing tests → implement → make tests pass.
+- Use small Conventional Commits for tests and code.
+- Produce `.dtaipd/artifacts/<feature>/Recap.md` on completion.
