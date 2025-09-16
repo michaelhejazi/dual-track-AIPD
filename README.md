@@ -30,6 +30,7 @@ This system empowers you to collaborate with ChatGPT on **brand, strategy, produ
 ### ✨ Core Ideas
 
 *   **Single source of truth**: `.dtaipd/core/` holds brand, product, and UX docs.
+*   **Architecture decisions**: ADRs live under `.dtaipd/core/adr/`.
 *   **Safe exploration**: `workbench/` for isolated feature prototyping.
 *   **Executable artifacts**: `.dtaipd/artifacts/` bridge the gap between discovery and delivery.
 *   **Hands-off delivery**: A `/ship` pipeline reduces human bottlenecks.
@@ -129,40 +130,14 @@ cd dual-track-AIPD
 
 ## 🎮 Usage
 
-The workflow is driven by a few simple commands from within your IDE. The commands have been recently refactored for clarity and consistency, with more detailed instructions for the AI agents.
+The workflow is driven by a few simple commands from within your IDE. The commands are defined in `.cursor/commands/*.md` and call into `.dtaipd/.flow/commands/*` for detailed steps.
 
 | Command      | Description                                                                              | Output                                                                 |
 | :----------- | :--------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
 | **/capture** | Summarizes the latest inbox note and extracts any TODOs.                                 | `.dtaipd/inbox/SUMMARY.md`                                             |
-| **`/vibe`**  | Creates a prototype in the workbench based on a user's description.                        | `workbench/<feature>/`                                                 |
-| **`/distill`** | Processes a feature to generate a specification, acceptance tests, and tasks.            | `.dtaipd/artifacts/<feature>/`                                         |
-| **`/ship`**    | Runs the automated pipeline to develop, review, and manage the feature shipment.         | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md` |
-
-### Visual Overview of the Workflow
-
-```mermaid
-sequenceDiagram
-    participant You
-    participant ChatGPT
-    participant CaptureAgent
-    participant VibeAgent
-    participant DistillAgent
-    participant ShipPipeline
-    participant Prod
-
-    You->>ChatGPT: Explore product, brand, UX ideas
-    ChatGPT->>You: Draft docs, specs, ideas
-    You->>Repo: Paste into /.dtaipd/inbox
-    You->>CaptureAgent: /capture
-    CaptureAgent->>Repo: .dtaipd/inbox/SUMMARY.md
-    You->>VibeAgent: /vibe "New Feature"
-    VibeAgent->>Repo: workbench/<feature>/ prototype
-    You->>DistillAgent: /distill
-    DistillAgent->>Repo: .dtaipd/artifacts/<feature>/ (spec, tests, tasks)
-    You->>ShipPipeline: /ship
-    ShipPipeline->>Prod: Implement + PR + Recap
-    ShipPipeline->>Repo: .dtaipd/artifacts/<feature>/Recap.md
-```
+| **`/vibe`**  | Creates a prototype in the workbench based on a user's description.                      | `workbench/<feature>/`                                                 |
+| **`/distill`** | Processes a feature to generate a specification, acceptance tests, and tasks.           | `.dtaipd/artifacts/<feature>/`                                         |
+| **`/ship`**    | Runs the automated pipeline to develop, review, and manage the feature shipment.        | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md`      |
 
 ---
 
@@ -172,7 +147,7 @@ Contributions are what make the open source community such an amazing place to l
 
 1.  Fork the Project
 2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m '''Add some AmazingFeature'''`)
+3.  Commit your Changes (`git commit -m 'feat: add AmazingFeature'`)
 4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
