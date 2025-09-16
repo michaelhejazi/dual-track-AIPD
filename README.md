@@ -35,6 +35,7 @@ This system empowers you to collaborate with ChatGPT on **brand, strategy, produ
 *   **Executable artifacts**: `.dtaipd/artifacts/` bridge the gap between discovery and delivery.
 *   **Hands-off delivery**: A `/ship` pipeline reduces human bottlenecks.
 *   **Traceability**: Each feature gets a `Recap.md` for a clear history.
+*   **Cursor awareness**: `.cursor/rules.md` biases the AI toward `.dtaipd/core/**` and `.dtaipd/.flow/**` and clarifies write bounds.
 
 ---
 
@@ -62,9 +63,10 @@ dual-track-AIPD/
 │   │   ├── 🎯 product/         # Goals, audiences, roadmap
 │   │   ├── 🖌️ ux/              # UI/UX design system, writing rules
 │   │   ├── 💻 tech-stack/      # Tech stack, architecture, and infrastructure
+│   │   ├── 🧭 adr/             # Architecture Decision Records
 │   │   └── 📚 references/      # Links, recaps, research
 │   │
-│   ├── 📥 inbox/               # 📝 Raw ChatGPT outputs, scratchpad
+│   ├── 📥 inbox/               # 📝 Raw ChatGPT outputs, scratchpad (see Changelog.md)
 │   ├── 📜 artifacts/           # ✨ Distilled specs, acceptance tests, tasks
 │   │
 │   └── 🤖 .flow/               # 🧠 Prompts, rules, and workflow definitions
@@ -73,6 +75,8 @@ dual-track-AIPD/
 │
 ├── 🛠️ workbench/           # Feature sandboxes (created via /vibe)
 ├── 🔌 .cursor/             # IDE integration (slash commands)
+│   ├── commands/           # /capture, /vibe, /distill, /ship triggers
+│   └── rules.md            # Context priority and write bounds
 └── 📄 README.md            # 📍 You are here
 ```
 
@@ -100,18 +104,20 @@ flowchart LR
 ### 2. 🎨 Vibe Prototyping (in your IDE)
 
 *   Use the `/vibe` command to quickly prototype UI/UX in a safe, isolated environment. Adapters pull in production resources without risk.
+*   Each iteration appends a brief entry to `.dtaipd/inbox/Changelog.md`.
 
 ### 3. 🧪 Artifact Distillation (in your IDE)
 
 *   Run the `/distill` command to transform prototypes and notes into concrete, executable artifacts:
-    *   `spec.md`: A lean, testable specification.
+    *   `spec.md`: A lean, testable specification (embeds a visual snapshot from `workbench/<feature>/docs/visual.png`).
     *   `acceptance-tests.md`: Plain-language tests and code stubs.
     *   `tasks.md`: A list of atomic, actionable tasks.
+    *   `deps-delta.md`: Prototype vs production dependency notes (optional but recommended).
 
 ### 4. 🚀 Hands-off Shipping (in your IDE)
 
 *   Execute the `/ship` command to trigger the automated pipeline:
-    *   **Developer Agent**: Implements the code and tests.
+    *   **Developer Agent**: Implements the code and tests (TDD-first).
     *   **Reviewer Agent**: Enforces patterns, quality, and consistency.
     *   **Project Manager Agent**: Manages gates, finalizes the PR, and writes a `Recap.md`.
 
@@ -130,14 +136,14 @@ cd dual-track-AIPD
 
 ## 🎮 Usage
 
-The workflow is driven by a few simple commands from within your IDE. The commands are defined in `.cursor/commands/*.md` and call into `.dtaipd/.flow/commands/*` for detailed steps.
+The workflow is driven by a few simple commands from within your IDE. The commands are defined in `.cursor/commands/*.md` and call into `.dtaipd/.flow/commands/*` for detailed steps. Cursor prioritizes context per `.cursor/rules.md`.
 
 | Command      | Description                                                                              | Output                                                                 |
 | :----------- | :--------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
 | **/capture** | Summarizes the latest inbox note and extracts any TODOs.                                 | `.dtaipd/inbox/SUMMARY.md`                                             |
 | **`/vibe`**  | Creates a prototype in the workbench based on a user's description.                      | `workbench/<feature>/`                                                 |
 | **`/distill`** | Processes a feature to generate a specification, acceptance tests, and tasks.           | `.dtaipd/artifacts/<feature>/`                                         |
-| **`/ship`**    | Runs the automated pipeline to develop, review, and manage the feature shipment.        | Production code, a PR, and `.dtaipd/artifacts/<feature>/Recap.md`      |
+| **`/ship`**    | Runs the automated pipeline to develop, review, and manage the feature shipment.        | Production code and `.dtaipd/artifacts/<feature>/Recap.md`             |
 
 ---
 
