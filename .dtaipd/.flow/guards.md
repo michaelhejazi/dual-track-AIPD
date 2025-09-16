@@ -1,7 +1,7 @@
 # Guardrails
 
 ## Roots
-- PROD_ROOTS: ["app/", "src/", "server/", "packages/"]
+- PROD_ROOTS: everything except the following: [workbench/, .dtaipd/, .cursor/]
 - WORKBENCH_ROOT: "workbench/"
 - CONTEXT_ROOT: ".dtaipd/"
 
